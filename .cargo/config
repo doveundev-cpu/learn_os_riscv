@@ -1,0 +1,6 @@
+[build]
+target = "riscv64gc-unknown-none-elf"
+rustflags = ['link-arg=-Tsrc/lds/virt.lds']
+
+[target.riscv64gc-unknown-none-elf]
+runner = "qemu-system-riscv64 -machine virt -cpu rv64 -smp 4 -m 128M -bios none -kernel -drive file=fat:rw:target/riscv64gc-unknown-none-elf/debug/learn_os_riscv,format=raw -nographic -serial mon:stdio"
